@@ -13,6 +13,8 @@ import Control.Monad.Except (ExceptT (..))
 import Data.Aeson (FromJSON, ToJSON)
 import Data.Bifunctor (first)
 import Effectful (Eff, IOE, runEff, (:>))
+import Effectful.Dispatch.Static (unEff, unsafeEff)
+import Effectful.Dispatch.Static.Primitive (cloneEnv)
 import Effectful.Error.Static (Error, runError, throwError)
 import Effectful.Reader.Static (Reader, ask, runReader)
 import GHC.Generics (Generic)
@@ -66,18 +68,25 @@ getItem itemId = do
   name <- ask
   pure $ Item itemId name
 
+withClonedEnv :: Eff es a -> Eff es a
+withClonedEnv action =
+  unsafeEff $ \es -> do
+    env <- cloneEnv es
+    unEff action env
+
 stream :: (IOE :> es, Reader String :> es) => Eff es (ConduitT () Item IO ())
 stream =
-  C.withRunInIO $ \runIO -> do
-    pure $
-      C.yieldMany [1 ..]
-        .| C.takeC 10
-        .| C.mapMC
-          ( \i -> runIO $ do
-              name <- ask
+  withClonedEnv $ do
+    C.withRunInIO $ \runIO -> do
+      pure $
+        C.yieldMany [1 ..]
+          .| C.takeC 10
+          .| C.mapMC
+            ( \i -> runIO $ do
+                name <- ask
 
-              pure $ Item i name
-          )
+                pure $ Item i name
+            )
 
 mkApp :: String -> Application
 mkApp name =

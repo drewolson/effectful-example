@@ -40,8 +40,7 @@ library
       aeson
     , base >=4.7 && <5
     , conduit
-    , effectful
-    , effectful-th
+    , effectful-core
     , exceptions
     , mtl
     , servant-conduit
@@ -64,8 +63,7 @@ executable example-exe
       aeson
     , base >=4.7 && <5
     , conduit
-    , effectful
-    , effectful-th
+    , effectful-core
     , example
     , exceptions
     , mtl
@@ -90,8 +88,7 @@ test-suite example-test
       aeson
     , base >=4.7 && <5
     , conduit
-    , effectful
-    , effectful-th
+    , effectful-core
     , example
     , exceptions
     , mtl
