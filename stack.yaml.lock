@@ -3,11 +3,37 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    commit: d51cb6979b1409ed9b485bf225cf0580818baaa9
+    git: https://github.com/haskell-effectful/effectful.git
+    name: effectful-core
+    pantry-tree:
+      sha256: 5590a4ea064b7089d0240b174313bb12b4c507c50eeb7934fc19480a17ce5ac8
+      size: 2120
+    subdir: effectful-core
+    version: 2.3.1.0
+  original:
+    commit: d51cb6979b1409ed9b485bf225cf0580818baaa9
+    git: https://github.com/haskell-effectful/effectful.git
+    subdir: effectful-core
+- completed:
+    commit: d51cb6979b1409ed9b485bf225cf0580818baaa9
+    git: https://github.com/haskell-effectful/effectful.git
+    name: effectful
+    pantry-tree:
+      sha256: a80ee664ac46dea16c755e9c49214d9560525e98838776121111ab1885e8b9c8
+      size: 3036
+    subdir: effectful
+    version: 2.3.1.0
+  original:
+    commit: d51cb6979b1409ed9b485bf225cf0580818baaa9
+    git: https://github.com/haskell-effectful/effectful.git
+    subdir: effectful
 snapshots:
 - completed:
-    sha256: 4a0e5e187fbef423f9c60072bfb1dd56f2a01a07a2667eb1469bd79073cfceaf
-    size: 713340
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/20.yaml
+    sha256: 8e7996960d864443a66eb4105338bbdd6830377b9f6f99cd5527ef73c10c01e7
+    size: 719128
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/26.yaml
   original:
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/20.yaml
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/26.yaml

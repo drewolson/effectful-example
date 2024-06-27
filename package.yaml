@@ -21,13 +21,11 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 language: GHC2021
 
-default-extensions:
-- DataKinds
-
 dependencies:
 - base >= 4.7 && < 5
 - aeson
 - conduit
+- effectful
 - effectful-core
 - exceptions
 - mtl
